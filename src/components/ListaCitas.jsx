@@ -15,7 +15,6 @@ const ListaCitas = ({ propsCitas, propBorrarCita }) => {
           propBorrarCita={propBorrarCita}
         ></ItemCita>
       ))}
-      ;
     </>
   );
 };

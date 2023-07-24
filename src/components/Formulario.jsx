@@ -4,6 +4,7 @@ import ListaCitas from "./ListaCitas";
 
 const Formulario = () => {
   const [citas, setCitas] = useState([]);
+  const [show, setShow] = useState(true);
 
   let citasLista = {
     nombreMascota: "",
@@ -18,6 +19,9 @@ const Formulario = () => {
     console.log(citasLista);
     setCitas([...citas, citasLista]);
     console.log(citas);
+    if (citas !== []) {
+      setShow(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -29,6 +33,10 @@ const Formulario = () => {
       (itemCita) => itemCita !== citaBorrar
     );
     setCitas(listaCitasFiltrada);
+    if (citas.length == 0) {
+      setShow(true);
+      console.log(show);
+    }
   };
 
   return (
@@ -89,7 +97,19 @@ const Formulario = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaCitas propsCitas={citas} propBorrarCita={borrarCitas}></ListaCitas>
+
+      {show ? (
+        <div className="container" style={{ backgroundColor: "lightblue" }}>
+          <h3 className="m-3 p-4 text-center">No hay citas</h3>
+        </div>
+      ) : (
+        <div className="d-flex flex-wrap">
+          <ListaCitas
+            propsCitas={citas}
+            propBorrarCita={borrarCitas}
+          ></ListaCitas>
+        </div>
+      )}
     </>
   );
 };

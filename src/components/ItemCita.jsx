@@ -3,15 +3,19 @@ import { Card, Button } from "react-bootstrap";
 const ItemCita = ({ propsCita, propBorrarCita }) => {
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card className="m-3" style={{ width: "18rem" }}>
         <div className="d-flex">
           <div
             className="m-2 border rounded-circle"
             style={{ backgroundColor: "lightblue", width: "80px" }}
           ></div>
           <div className="p-3">
-            <Card.Title>Nombre: {propsCita["nombreMascota"]}</Card.Title>
-            <Card.Title>Dueño: {propsCita["nombreDueño"]}</Card.Title>
+            <Card.Title className="fs-6">
+              Nombre: {propsCita["nombreMascota"]}
+            </Card.Title>
+            <Card.Title className="fs-6">
+              Dueño: {propsCita["nombreDueño"]}
+            </Card.Title>
           </div>
         </div>
         <Card.Body style={{ backgroundColor: "lightblue" }}>
