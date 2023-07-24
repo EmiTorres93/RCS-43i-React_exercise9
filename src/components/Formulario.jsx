@@ -16,9 +16,7 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(citasLista);
     setCitas([...citas, citasLista]);
-    console.log(citas);
     if (citas !== []) {
       setShow(false);
     }
@@ -33,9 +31,8 @@ const Formulario = () => {
       (itemCita) => itemCita !== citaBorrar
     );
     setCitas(listaCitasFiltrada);
-    if (citas.length == 0) {
+    if (citas.length == 1) {
       setShow(true);
-      console.log(show);
     }
   };
 
