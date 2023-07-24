@@ -1,9 +1,35 @@
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import ListaCitas from "./ListaCitas";
 
 const Formulario = () => {
+  const [citas, setCitas] = useState([]);
+
+  let citasLista = {
+    nombreMascota: "",
+    nombreDueño: "",
+    fecha: "",
+    hora: "",
+    sintomas: "",
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(citasLista);
+    setCitas([...citas, citasLista]);
+    console.log(citas);
+  };
+
+  const handleChange = (e) => {
+    citasLista[e.target.name] = e.target.value;
+  };
+
   return (
     <>
-      <Form className="p-0 border border-3 shadow p-3 mb-5 bg-body rounded">
+      <Form
+        className="p-0 border border-3 shadow p-3 mb-5 bg-body rounded"
+        onSubmit={handleSubmit}
+      >
         <Form.Label className="p-3 fs-3">
           Llenar el formulario para crear una cita.
         </Form.Label>
@@ -14,24 +40,39 @@ const Formulario = () => {
         >
           <Form.Group className="d-flex mb-3" controlId="formMascota">
             <Form.Label className="me-2">Nombre de la mascota:</Form.Label>
-            <Form.Control type="text" placeholder="Nombre de la mascota" />
+            <Form.Control
+              type="text"
+              placeholder="Nombre de la mascota"
+              name="nombreMascota"
+              onChange={handleChange}
+            />
           </Form.Group>
 
           <Form.Group className="d-flex mb-3" controlId="formDueño">
             <Form.Label className="me-4">Nombre del dueño:</Form.Label>
-            <Form.Control type="text" placeholder="Nombre del dueño" />
+            <Form.Control
+              type="text"
+              placeholder="Nombre del dueño"
+              name="nombreDueño"
+              onChange={handleChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3 d-flex" controlId="formFechaHora">
             <Form.Label className="me-4">Fecha:</Form.Label>
-            <Form.Control type="date" placeholder="dd/mm/yyyy" />
+            <Form.Control type="date" name="fecha" onChange={handleChange} />
             <Form.Label className="me-4 ms-4">Hora:</Form.Label>
-            <Form.Control type="time" />
+            <Form.Control type="time" name="hora" onChange={handleChange} />
           </Form.Group>
 
           <Form.Group className="d-flex mb-3" controlId="formSintomas">
             <Form.Label className="me-4">Síntomas:</Form.Label>
-            <Form.Control type="text" placeholder="Describir síntomas" />
+            <Form.Control
+              type="text"
+              placeholder="Describir síntomas"
+              name="sintomas"
+              onChange={handleChange}
+            />
           </Form.Group>
         </Form.Group>
 
@@ -41,6 +82,7 @@ const Formulario = () => {
           </Button>
         </Form.Group>
       </Form>
+      <ListaCitas propsCitas={citas}></ListaCitas>
     </>
   );
 };
