@@ -1,6 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 
-const ItemCita = (propsCita) => {
+const ItemCita = ({ propsCita, propBorrarCita }) => {
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -44,7 +44,11 @@ const ItemCita = (propsCita) => {
           </div>
         </Card.Body>
         <div className="d-flex justify-content-end">
-          <Button variant="primary" className="m-3 btn btn-danger">
+          <Button
+            onClick={() => propBorrarCita(propsCita)}
+            variant="primary"
+            className="m-3 btn btn-danger"
+          >
             Eliminar
           </Button>
         </div>

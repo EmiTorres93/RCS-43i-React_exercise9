@@ -24,6 +24,13 @@ const Formulario = () => {
     citasLista[e.target.name] = e.target.value;
   };
 
+  const borrarCitas = (citaBorrar) => {
+    let listaCitasFiltrada = citas.filter(
+      (itemCita) => itemCita !== citaBorrar
+    );
+    setCitas(listaCitasFiltrada);
+  };
+
   return (
     <>
       <Form
@@ -82,7 +89,7 @@ const Formulario = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaCitas propsCitas={citas}></ListaCitas>
+      <ListaCitas propsCitas={citas} propBorrarCita={borrarCitas}></ListaCitas>
     </>
   );
 };

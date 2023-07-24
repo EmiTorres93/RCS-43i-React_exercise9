@@ -1,6 +1,6 @@
 import ItemCita from "./ItemCita";
 
-const ListaCitas = ({ propsCitas }) => {
+const ListaCitas = ({ propsCitas, propBorrarCita }) => {
   return (
     <>
       {propsCitas.map((cita, index) => (
@@ -12,6 +12,7 @@ const ListaCitas = ({ propsCitas }) => {
           fecha={cita["fecha"]}
           hora={cita["hora"]}
           sintomas={cita["sintomas"]}
+          propBorrarCita={propBorrarCita}
         ></ItemCita>
       ))}
       ;
